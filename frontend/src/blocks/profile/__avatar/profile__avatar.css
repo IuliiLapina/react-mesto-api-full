@@ -1,0 +1,13 @@
+.profile__avatar {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  grid-area: avatar;
+  background-size: cover;
+  background-position: center;
+  cursor: url('../../../images/avatar/avatar-ico.png'), auto;
+}
+
+.profile__avatar:hover {
+  opacity: 0.8;
+}
