@@ -1,0 +1,14 @@
+.profile__info {
+  min-width: 282px;
+  display: grid;
+  grid-template-areas:
+  "title edit-button"
+  "subtitle subtitle";
+}
+
+@media screen and (min-width: 880px) {
+  .profile__info {
+    grid-area: info;
+    justify-content: start;
+  }
+}
