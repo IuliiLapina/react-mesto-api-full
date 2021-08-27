@@ -99,8 +99,8 @@ class Api {
 }
 
 const api = new Api({
-  address: "https://mesto.nomoreparties.co",
-  token: "7a45c432-7073-4f3b-9cf1-c12940fb64b9",
+  address: "https://178.154.246.154/api",
+//  token: "7a45c432-7073-4f3b-9cf1-c12940fb64b9",
 });
 
 export default api;
