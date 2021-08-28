@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 // eslint-disable-next-line import/no-unresolved
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -19,6 +20,22 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
+const whitelist = [
+  'http://mesto.iapina.nomoredomains.club',
+  'http://backend.mesto.iapina.nomoredomains.club',
+  'localhost:3000'
+]
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -26,11 +43,15 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
-
+app.use(cors());
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
+
+app.get('/', cors(corsOptions), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for only example.com.'})
+})
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
