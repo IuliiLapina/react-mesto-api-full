@@ -1,4 +1,5 @@
 const express = require('express');
+// eslint-disable-next-line import/no-unresolved
 const cors = require('cors');
 // eslint-disable-next-line import/no-unresolved
 const mongoose = require('mongoose');
