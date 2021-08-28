@@ -1,5 +1,6 @@
+
+//require('dotenv').config();
 const express = require('express');
-// eslint-disable-next-line import/no-unresolved
 const cors = require('cors');
 // eslint-disable-next-line import/no-unresolved
 const mongoose = require('mongoose');
@@ -13,6 +14,7 @@ const { createUser } = require('./controllers/users');
 
 const auth = require('./middlewares/auth');
 const { NotFoundError, BadRequestError } = require('./middlewares/errors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
@@ -21,17 +23,6 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
-const corsOptions = {
-  origin: [
-    'http://mesto.iapina.nomoredomains.club',
-    'http://backend.mesto.iapina.nomoredomains.club',
-     'http://178.154.246.154',
-     'http://localhost',
-  ],
-  credentials: true,
-};
-app.use(cors(corsOptions));
-
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -39,14 +30,19 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
+app.use(cors());
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
+//логгер запросов
+app.use(requestLogger);
 
-app.get('/', cors(corsOptions), function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for only example.com.'})
-})
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
@@ -66,7 +62,7 @@ app.post('/signin', celebrate({
 }), login);
 
 // авторизация
-app.use(auth);
+//app.use(auth);
 // все что ниже - закрыто авторизацией
 
 app.use('/users', userRouter);
@@ -76,6 +72,8 @@ app.get('*', (() => {
   throw new NotFoundError('Запрашиваемый ресурс не найден');
 }));
 
+//логгер ошибок
+app.use(errorLogger);
 app.use(errors()); // обработчик ошибок celebrate
 
 // централизованный обработчик ошибок
