@@ -5,7 +5,7 @@ const checkResponse = (res) => {
     return Promise.reject(`Ошибка ${res.status}`);
   }
 
-export const BASE_URL = 'https://backend.mesto.iapina.nomoredomains.club'; //!!!
+export const BASE_URL = 'backend.mesto.iapina.nomoredomains.club'; //!!!
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
