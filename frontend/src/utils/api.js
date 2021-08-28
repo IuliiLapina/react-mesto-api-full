@@ -1,7 +1,7 @@
 class Api {
-  constructor({ address, headers }) {
+  constructor({ address, token }) {
     this._address = address;
-    this._headers = headers;
+    this._token = token;
   }
 
   _checkResponse(res) {
@@ -15,7 +15,7 @@ class Api {
   getUserData() {
     return fetch(`${this._address}/users/me`, {
       headers: {
-        authorization: this._headers,
+        authorization: this._token,
       },
     }).then(this._checkResponse);
   }
@@ -24,7 +24,7 @@ class Api {
   getInitialCards() {
     return fetch(`${this._address}/cards`, {
       headers: {
-        authorization: this._headers,
+        authorization: this._token,
       },
     }).then(this._checkResponse);
   }
@@ -33,7 +33,7 @@ class Api {
     return fetch(`${this._address}/users/me`, {
       method: "PATCH",
       headers: {
-        authorization: this._headers,
+        authorization: this._token,
         "Content-type": "application/json",
       },
       body: JSON.stringify({
@@ -47,7 +47,7 @@ class Api {
     return fetch(`${this._address}/users/me/avatar`, {
       method: "PATCH",
       headers: {
-        authorization: this._headers,
+        authorization: this._token,
         "Content-type": "application/json",
       },
       body: JSON.stringify({
@@ -60,7 +60,7 @@ class Api {
     return fetch(`${this._address}/cards`, {
       method: "POST",
       headers: {
-        authorization: this._headers,
+        authorization: this._token,
         "Content-type": "application/json",
       },
       body: JSON.stringify({
@@ -74,7 +74,7 @@ class Api {
     return fetch(`${this._address}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: {
-        authorization: this._headers,
+        authorization: this._token,
       },
     }).then(this._checkResponse);
   }
@@ -83,7 +83,7 @@ class Api {
     return fetch(`${this._address}/cards/likes/${id}`, {
       method: "DELETE",
       headers: {
-        authorization: this._headers,
+        authorization: this._token,
       },
     }).then(this._checkResponse);
   }
@@ -92,7 +92,7 @@ class Api {
     return fetch(`${this._address}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
-        authorization: this._headers,
+        authorization: this._token,
       },
     }).then(this._checkResponse);
   }
