@@ -30,7 +30,16 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
-app.use(cors());
+const corsOptions = {
+  origin: [
+    'https://mesto.iapina.nomoredomains.club',
+    'http://mesto.iapina.nomoredomains.club',
+     'http://178.154.246.154',
+     'http://localhost:3000',
+  ],
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
