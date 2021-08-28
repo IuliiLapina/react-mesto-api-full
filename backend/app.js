@@ -43,7 +43,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 */
-
+app.options('*', cors());
+/*
 const allowedCors = [
   'https://mesto.iapina.nomoredomains.club',
   'http://mesto.iapina.nomoredomains.club',
@@ -71,11 +72,10 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', requestHeaders);
     // завершаем обработку запроса и возвращаем результат клиенту
     return res.end();
-}
-
+  }
   next();
 });
-
+*/
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
