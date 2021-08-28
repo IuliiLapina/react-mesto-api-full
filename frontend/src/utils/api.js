@@ -13,7 +13,7 @@ class Api {
 
   //получить инфо пользователя с сервера
   getUserData() {
-    return fetch(`${this._address}/v1/cohort-22/users/me`, {
+    return fetch(`${this._address}/users/me`, {
       headers: {
         authorization: this._token,
       },
@@ -22,7 +22,7 @@ class Api {
 
   //получить карточки с сервера
   getInitialCards() {
-    return fetch(`${this._address}/v1/cohort-22/cards`, {
+    return fetch(`${this._address}/cards`, {
       headers: {
         authorization: this._token,
       },
@@ -30,7 +30,7 @@ class Api {
   }
 
   setUserData(data) {
-    return fetch(`${this._address}/v1/cohort-22/users/me`, {
+    return fetch(`${this._address}/users/me`, {
       method: "PATCH",
       headers: {
         authorization: this._token,
@@ -44,7 +44,7 @@ class Api {
   }
 
   setUserAvatar(link) {
-    return fetch(`${this._address}/v1/cohort-22/users/me/avatar`, {
+    return fetch(`${this._address}/users/me/avatar`, {
       method: "PATCH",
       headers: {
         authorization: this._token,
@@ -57,7 +57,7 @@ class Api {
   }
 
   addNewCard(data) {
-    return fetch(`${this._address}/v1/cohort-22/cards`, {
+    return fetch(`${this._address}/cards`, {
       method: "POST",
       headers: {
         authorization: this._token,
@@ -71,7 +71,7 @@ class Api {
   }
 
   addCardLike(cardId) {
-    return fetch(`${this._address}/v1/cohort-22/cards/likes/${cardId}`, {
+    return fetch(`${this._address}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: {
         authorization: this._token,
@@ -80,7 +80,7 @@ class Api {
   }
 
   deleteCardLike(id) {
-    return fetch(`${this._address}/v1/cohort-22/cards/likes/${id}`, {
+    return fetch(`${this._address}/cards/likes/${id}`, {
       method: "DELETE",
       headers: {
         authorization: this._token,
@@ -89,7 +89,7 @@ class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._address}/v1/cohort-22/cards/${cardId}`, {
+    return fetch(`${this._address}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
         authorization: this._token,
@@ -99,7 +99,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "backend.mesto.iapina.nomoredomains.club",
+  address: "http://backend.mesto.iapina.nomoredomains.club",
 //  token: "7a45c432-7073-4f3b-9cf1-c12940fb64b9",
 });
 
