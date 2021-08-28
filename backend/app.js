@@ -20,7 +20,6 @@ const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 
 const { PORT = 3000 } = process.env;
-
 const app = express();
 
 // подключаемся к серверу mongo
@@ -43,8 +42,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 */
-app.options('*', cors());
-/*
+//app.options('*', cors());
+
 const allowedCors = [
   'https://mesto.iapina.nomoredomains.club',
   'http://mesto.iapina.nomoredomains.club',
@@ -75,7 +74,7 @@ app.use((req, res, next) => {
   }
   next();
 });
-*/
+
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
