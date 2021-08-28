@@ -5,4 +5,4 @@
 http://mesto.iapina.nomoredomains.club
 
 Публичный IP
-http://178.154.246.154
+178.154.246.154
