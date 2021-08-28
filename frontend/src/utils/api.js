@@ -99,7 +99,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "backend.mesto.iapina.nomoredomains.club",
+  address: "http://backend.mesto.iapina.nomoredomains.club",
 //  token: "7a45c432-7073-4f3b-9cf1-c12940fb64b9",
 });
 
