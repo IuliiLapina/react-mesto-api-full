@@ -20,21 +20,16 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
-const whitelist = [
-  'http://mesto.iapina.nomoredomains.club',
-  'http://backend.mesto.iapina.nomoredomains.club',
-  'localhost:3000'
-]
-
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+  origin: [
+    'http://mesto.iapina.nomoredomains.club',
+    'http://backend.mesto.iapina.nomoredomains.club',
+     'http://178.154.246.154',
+     'http://localhost,
+  ],
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb', {
@@ -43,7 +38,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
-app.use(cors());
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
