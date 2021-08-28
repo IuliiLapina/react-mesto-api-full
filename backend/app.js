@@ -107,7 +107,7 @@ app.post('/signin', celebrate({
 }), login);
 
 // авторизация
-//app.use(auth);
+app.use(auth);
 // все что ниже - закрыто авторизацией
 
 app.use('/users', userRouter);
