@@ -28,6 +28,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({}); //стейт контекста пользователя
   const [email, setEmail] = React.useState('');
 
+  /*
   React.useEffect(() => {
     api
       .getUserData()
@@ -36,7 +37,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, []);
-
+*/
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     // если у пользователя есть токен в localStorage, 
@@ -124,7 +125,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   }
-
+/*
   //стейт карточек
   const [cards, setCards] = React.useState([]);
   React.useEffect(() => {
@@ -135,7 +136,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, []);
-
+*/
   
   //добавление / удаление лайков на карточках
   function handleCardLike(card) {
@@ -195,6 +196,7 @@ function App() {
   }
 
   //авторизация пользователя
+  /*
   function authAuthorize(email, password) {
     auth
     .authorize(email, password)
@@ -215,6 +217,38 @@ function App() {
         console.log(err);
       })
   }
+  */
+  function authAuthorize(password, email) {
+    auth.authorize(password, email)
+        .then((res) => {
+          if (res) {
+            localStorage.setItem('token', res.token)
+            setEmail(res.data.email);
+            setLoggedIn(true);
+            history.push('/');
+            shandleInfoTooltipContent('Вы успешно зарегистрировались!', okImg);
+            handleInfoTooltipPopupOpen();
+        }
+    })
+    .catch((err) => {
+      handleInfoTooltipContent('Что-то пошло не так! Попробуйте ещё раз.', errorImg);
+      handleInfoTooltipPopupOpen();
+      console.log(err);
+    })
+  }
+
+  function checkToken() {
+    const token = localStorage.getItem('token')
+
+    if (token) {
+      auth.getToken(token)
+        .then(res => {
+          setEmail(res.data.email);
+          setLoggedIn(true)
+        })
+        .catch(e => { console.log(e) }) 
+    }
+  }
 
 //выход из профиля
   function handleExit () {
@@ -222,7 +256,25 @@ function App() {
     setEmail('');
     localStorage.removeItem('jwt');
   }
- 
+
+  React.useEffect(() => {
+    if (loggedIn) {
+      history.push('/')
+      Promise.all([api.getUserData(), api.getInitialCards()])
+      .then(([userData, cardData]) => {
+        setCurrentUser(userData);
+        setCards(cardData);
+      })
+      .catch(e => { console.log(e) })
+    }
+    
+  }, [loggedIn, history])
+  // }, [loggedIn])
+
+  React.useEffect(() => { 
+    checkToken();  
+  }) 
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
