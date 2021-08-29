@@ -35,11 +35,11 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
 
       <section className="content-cards">
         <ul className="cards">
-          {cards.map((card) => (
+          {cards.map((obj) => (
             <Card
-              card={card}
+              card={obj}
               onCardClick={onCardClick}
-              key={card._id}
+              key={obj._id}
               onCardLike={onCardLike}
               onCardDelete={onCardDelete}
             />
