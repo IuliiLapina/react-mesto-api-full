@@ -5,7 +5,7 @@ import CurrentUserContext from "../contexts/CurrentUserContext.js";
 function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCardLike, onCardDelete}) {
   //стейт для данных пользователя
   const currentUser = React.useContext(CurrentUserContext);
-  console.log(`в маине кардс ${cards} и кард ${card}`);
+  console.log(`в маине кардс ${cards}`);
 
   return (
     <main className="content">
@@ -36,7 +36,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
 
       <section className="content-cards">
         <ul className="cards">
-          {[cards].map((card) => (
+          {[data.cards].map((card) => (
             <Card
               card={card}
               onCardClick={onCardClick}
