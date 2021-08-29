@@ -138,6 +138,19 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 */
+
+ //добавление карточки
+ function handleAddPlaceSubmit({name, link}) {
+  api
+  .addNewCard({name, link})
+  .then((newCard) => {
+    setCards([newCard, ...cards]);
+
+    closeAllPopups();
+  })
+  .catch((err) => console.log(err));
+}
+
 React.useEffect(() => {
   if (loggedIn) {
     history.push('/');
@@ -177,18 +190,6 @@ React.useEffect(() => {
     .then(() => {
       const newCardList = cards.filter((c) => (c._id !== card._id));
       setCards(newCardList);
-    })
-    .catch((err) => console.log(err));
-  }
-
-  //добавление карточки
-  function handleAddPlaceSubmit({name, link}) {
-    api
-    .addNewCard({name, link})
-    .then((newCard) => {
-      setCards([newCard, ...cards]);
-
-      closeAllPopups();
     })
     .catch((err) => console.log(err));
   }
