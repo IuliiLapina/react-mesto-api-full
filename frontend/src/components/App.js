@@ -27,8 +27,7 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({}); //стейт контекста пользователя
   const [email, setEmail] = React.useState('');
-
-  
+/*
   React.useEffect(() => {
     api
       .getUserData()
@@ -37,6 +36,25 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, []);
+  */
+  React.useEffect(() => {
+    if (loggedIn) {
+      history.push('/');
+      api
+      .getUserData()
+      .then((userData) => {
+        setCurrentUser(userData);
+      })
+      .catch((err) => console.log(err));
+
+      api
+      .getInitialCards()
+      .then((cardData) => {
+        setCards(cardData);
+      })
+      .catch((err) => console.log(err));
+    }    
+  }, [loggedIn]);
 
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -150,7 +168,7 @@ function App() {
   })
   .catch((err) => console.log(err));
 }
-
+/*
 React.useEffect(() => {
   if (loggedIn) {
     history.push('/');
@@ -163,7 +181,7 @@ React.useEffect(() => {
     .catch((err) => console.log(err));
   }
 }, [loggedIn]);
-
+*/
   
   //добавление / удаление лайков на карточках
   function handleCardLike(card) {
