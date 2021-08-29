@@ -28,7 +28,6 @@ function Card({ card, onCardClick, onCardLike, onCardDelete}) {
   function handleDeleteClick() {
     onCardDelete(card)
   }
-  console.log(`в кард ${card}`);
 
   return (
     <li className="card">
