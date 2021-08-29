@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 // eslint-disable-next-line import/no-unresolved
 const cors = require('cors');
@@ -22,6 +21,7 @@ const cardRouter = require('./routes/cards');
 
 const { PORT = 3000 } = process.env;
 const app = express();
+require('dotenv').config();
 
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb', {
