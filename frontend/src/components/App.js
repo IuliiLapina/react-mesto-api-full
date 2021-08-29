@@ -241,8 +241,6 @@ function App() {
     checkToken();  
   }) 
 
-console.log(`в апп ${obj.cards}`);
-  
 return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
