@@ -62,6 +62,7 @@ function App() {
   const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = React.useState(false);
   const [titleInfoTooltipPopup, setTitleInfoTooltipPopup] = React.useState('');
   const [imageInfoTooltipPopup, setImageInfoTooltipPopup] = React.useState('');
+  const [cards, setCards] = React.useState([]);
 
   const [selectedCard, setSelectedCard] = React.useState({});
 
@@ -125,9 +126,9 @@ function App() {
       })
       .catch((err) => console.log(err));
   }
-/*
+
   //стейт карточек
-  const [cards, setCards] = React.useState([]);
+  /*
   React.useEffect(() => {
     api
       .getInitialCards()
@@ -226,7 +227,7 @@ function App() {
             setEmail(res.data.email);
             setLoggedIn(true);
             history.push('/');
-            shandleInfoTooltipContent('Вы успешно зарегистрировались!', okImg);
+            handleInfoTooltipContent('Вы успешно зарегистрировались!', okImg);
             handleInfoTooltipPopupOpen();
         }
     })
