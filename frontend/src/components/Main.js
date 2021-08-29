@@ -35,7 +35,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
 
       <section className="content-cards">
         <ul className="cards">
-          {[cards].map((card) => (
+          {{cards}.map((card) => (
             <Card
               card={card}
               onCardClick={onCardClick}
