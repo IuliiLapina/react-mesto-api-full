@@ -143,7 +143,7 @@ function App() {
  //добавление карточки
  function handleAddPlaceSubmit({name, link}) {
   api
-  .addNewCard(name, link)
+  .addNewCard({name, link})
   .then((newCard) => {
     setCards([newCard, cards]);
 
