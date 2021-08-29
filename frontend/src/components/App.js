@@ -241,7 +241,7 @@ function App() {
     const token = localStorage.getItem('token')
 
     if (token) {
-      auth.getToken(token)
+      auth.getContent(token)
         .then(res => {
           setEmail(res.data.email);
           setLoggedIn(true)
