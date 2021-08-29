@@ -271,7 +271,7 @@ function App() {
 
   React.useEffect(() => {
     if (loggedIn) {
-      history.push('/')
+     // history.push('/')
       .then([api.getUserData(), api.getInitialCards()])
       .then(([userData, cardData]) => {
         setCurrentUser(userData);
