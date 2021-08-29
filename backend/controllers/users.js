@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-const JWT_SECRET_CODE = '42-ponchikaNaLune';
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -68,7 +67,10 @@ module.exports.login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       // аутентификация успешна! пользователь в переменной user
-      const token = jwt.sign({ _id: user._id }, JWT_SECRET_CODE, { expiresIn: '7d' });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+       { expiresIn: '7d' });
     /*const token = jwt.sign(
       { _id: user._id },
       NODE_ENV === 'production' ? JWT_SECRET
