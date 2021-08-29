@@ -154,7 +154,7 @@ React.useEffect(() => {
   //добавление / удаление лайков на карточках
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = [card.likes].some((i) => i === currentUser._id);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     const likeToChange = isLiked
       ? api.deleteCardLike(card._id)
