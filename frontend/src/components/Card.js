@@ -28,18 +28,19 @@ function Card({ card, onCardClick, onCardLike, onCardDelete}) {
   function handleDeleteClick() {
     onCardDelete(card)
   }
+  console.log(card.name);
 
   return (
     <li className="card">
       <img
         className="card__image"
-        src={data.card.link}
+        src={card.link}
         alt={card.name}
         onClick={handleClick}
       />
       <div className="card__description">
         <button className={cardDeleteButtonClassName} type="button" onClick={handleDeleteClick}></button>
-        <h2 className="card__title">{data.card.name}</h2>
+        <h2 className="card__title">{card.name}</h2>
         <div className="card__like-container">
           <button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick}></button>
           <p className="card__like-quantity">{[card.likes].length}</p>
