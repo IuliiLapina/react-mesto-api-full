@@ -134,7 +134,7 @@ function App() {
     api
       .getInitialCards()
       .then((cardData) => {
-        setCards([cardData]);
+        setCards(cardData);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -260,7 +260,7 @@ return (
               onEditProfile={handleEditProfileClick}
               onAddPlace={handleAddPlaceClick}
               onCardClick={handleCardClick}
-              cards={cards}
+              cards={[cards]}
               onCardLike={handleCardLike}
               onCardDelete={handleCardDelete}
             />
