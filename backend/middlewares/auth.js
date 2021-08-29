@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
+// require('dotenv').config();
+// const { NODE_ENV, JWT_SECRET } = process.env;
 
-//const { JWT_SECRET_CODE = '42-ponchikaNaLune'} = process.env;
 const JWT_SECRET_CODE = '42-ponchikaNaLune';
 const { UnauthorizedError } = require('./errors');
 
