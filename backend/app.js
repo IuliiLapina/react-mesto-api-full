@@ -97,7 +97,8 @@ app.post('/signup', celebrate({
     password: Joi.string().required().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().min(2).pattern(/(https?:\/\/)(w{3}\.)?(((\d{1,3}\.){3}\d{1,3})|((\w-?)+\.(ru|com)))(:\d{2,5})?((\/.+)+)?\/?#?/),
+    avatar: Joi.string().min(2),
+    // avatar: Joi.string().min(2).pattern(/(https?:\/\/)(w{3}\.)?(((\d{1,3}\.){3}\d{1,3})|((\w-?)+\.(ru|com)))(:\d{2,5})?((\/.+)+)?\/?#?/),
   }),
 }), createUser);
 
