@@ -39,7 +39,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
             <Card
               card={card}
               onCardClick={onCardClick}
-              key={card._id}
+       //       key={card._id}
               onCardLike={onCardLike}
               onCardDelete={onCardDelete}
             />
