@@ -138,6 +138,18 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 */
+React.useEffect(() => {
+  if (loggedIn) {
+    history.push('/');
+    api
+    .getInitialCards()
+    .then((cardData) => {
+      setCards(cardData);
+    })
+    .catch((err) => console.log(err));
+  }
+}, [loggedIn]);
+
   
   //добавление / удаление лайков на карточках
   function handleCardLike(card) {
@@ -258,17 +270,7 @@ function App() {
     localStorage.removeItem('jwt');
   }
 
-  React.useEffect(() => {
-    if (loggedIn) {
-      history.push('/');
-      api
-      .getInitialCards()
-      .then((cardData) => {
-        setCards(cardData);
-      })
-      .catch((err) => console.log(err));
-    }
-  }, [loggedIn]);
+
 
 /*
   React.useEffect(() => {
