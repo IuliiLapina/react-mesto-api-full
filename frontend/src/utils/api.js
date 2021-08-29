@@ -25,6 +25,7 @@ class Api {
     return fetch(`${this._address}/cards`, {
       headers: this._headers,
       credentials: 'include',
+      method:'GET', 
       })
       .then(this._checkResponse);
   }
