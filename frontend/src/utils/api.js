@@ -1,5 +1,5 @@
 class Api {
-  constructor({ address, token }) {
+  constructor({ address, headers }) {
     this._address = address;
     this._headers = headers;
   }
@@ -76,7 +76,7 @@ class Api {
       .then(this._checkResponse);
   }
 
-  deleteCardLike(id) {
+  deleteCardLike(cardId) {
     return fetch(`${this._address}/cards/likes/${cardId}`, {
       method: 'PUT',
       headers: this._headers,
