@@ -35,6 +35,8 @@ const corsOptions = {
   origin: [
     'https://mesto.iapina.nomoredomains.club',
     'http://mesto.iapina.nomoredomains.club',
+    'https://backend.mesto.iapina.nomoredomains.club',
+    'http://backend.mesto.iapina.nomoredomains.club',
     'http://178.154.246.154',
     'http://localhost:3000',
   ],
