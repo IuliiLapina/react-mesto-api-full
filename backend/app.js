@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 // eslint-disable-next-line import/no-unresolved
 const cors = require('cors');
@@ -21,7 +22,6 @@ const cardRouter = require('./routes/cards');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-require('dotenv').config();
 
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb', {
@@ -30,7 +30,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
-/*
+
 const corsOptions = {
   origin: [
     'https://mesto.iapina.nomoredomains.club',
@@ -42,9 +42,9 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-*/
-// app.options('*', cors());
 
+// app.options('*', cors());
+/*
 const allowedCors = [
   'https://mesto.iapina.nomoredomains.club',
   'http://mesto.iapina.nomoredomains.club',
@@ -77,7 +77,7 @@ app.use((req, res, next) => {
 });
 
 // app.use(cors());
-
+*/
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
