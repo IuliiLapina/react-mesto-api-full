@@ -68,16 +68,6 @@ function App() {
     }    
   }, [loggedIn]);
 
-  //стейт карточек
-  React.useEffect(() => {
-    api
-      .getInitialCards()
-      .then((cardData) => {
-        setCards(cardData);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
   //Обработчики открытия попапов
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
@@ -139,10 +129,21 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+  //стейт карточек
+  React.useEffect(() => {
+    api
+      .getInitialCards()
+      .then((cardData) => {
+        setCards(cardData);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+
  //добавление карточки
  function handleAddPlaceSubmit({name, link}) {
   api
-  .addNewCard({name, link})
+  .addNewCard(name, link)
   .then((newCard) => {
     setCards([newCard, cards]);
 
