@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 const express = require('express');
 // eslint-disable-next-line import/no-unresolved
 const cors = require('cors');
