@@ -239,7 +239,7 @@ React.useEffect(() => {
             setEmail(res.email);
             setLoggedIn(true);
             history.push('/');
-            handleInfoTooltipContent('Вы успешно зарегистрировались!', okImg);
+            handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
             handleInfoTooltipPopupOpen();
         }
     })
