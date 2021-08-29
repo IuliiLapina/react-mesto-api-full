@@ -236,7 +236,7 @@ React.useEffect(() => {
         .then((res) => {
           if (res) {
             localStorage.setItem('token', res.token)
-            setEmail(res.data.email);
+            setEmail(res.email);
             setLoggedIn(true);
             history.push('/');
             handleInfoTooltipContent('Вы успешно зарегистрировались!', okImg);
