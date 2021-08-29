@@ -39,9 +39,8 @@ module.exports.createUser = (req, res, next) => {
             // вернём записанные в базу данные
             // eslint-disable-next-line no-shadow
             .then((user) => {
-     //         res.status(201).send({ data: user });
+              // res.status(201).send({ data: user });
               res.status(201).send({ data: user });
-
             })
             // данные не записались, вернём ошибку
             .catch((err) => {
@@ -69,7 +68,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       // аутентификация успешна! пользователь в переменной user
       const token = jwt.sign({ _id: user._id }, JWT_SECRET_CODE, { expiresIn: '7d' });
-    /*const token = jwt.sign(
+      /* const token = jwt.sign(
       { _id: user._id },
       NODE_ENV === 'production' ? JWT_SECRET
         : 'some-secret-key',
@@ -83,7 +82,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
       }).status(200).send({ token });
       */
-     return res.send({ token })
+      return res.send({ token });
     })
     .catch(() => next(new UnauthorizedError('Произошла ошибка авторизации')));
 };
