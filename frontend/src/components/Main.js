@@ -5,6 +5,7 @@ import CurrentUserContext from "../contexts/CurrentUserContext.js";
 function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCardLike, onCardDelete}) {
   //стейт для данных пользователя
   const currentUser = React.useContext(CurrentUserContext);
+  console.log(`в маине кардс ${cards} и кард ${card}`);
 
   return (
     <main className="content">
