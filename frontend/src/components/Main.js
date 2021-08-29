@@ -17,7 +17,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
           style={{ backgroundImage: `url(${[currentUser.avatar]})` }}
         ></div>
         <div className="profile__info">
-          <h1 className="profile__title">{currentUser.data}</h1>
+          <h1 className="profile__title">{currentUser.name}</h1>
           <button
             onClick={onEditProfile}
             className="profile__edit-button"
