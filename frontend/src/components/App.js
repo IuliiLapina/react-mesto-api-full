@@ -258,6 +258,17 @@ function App() {
     localStorage.removeItem('jwt');
   }
 
+  
+  React.useEffect(() => {
+    api
+      .getInitialCards()
+      .then((cardData) => {
+        setCards(cardData);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+/*
   React.useEffect(() => {
     if (loggedIn) {
       history.push('/')
@@ -271,7 +282,7 @@ function App() {
     
   }, [loggedIn, history])
   // }, [loggedIn])
-
+*/
   React.useEffect(() => { 
     checkToken();  
   }) 
