@@ -3,8 +3,6 @@ const { NODE_ENV } = process.env;
 const { JWT_SECRET } = require('../config.env');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-// require('dotenv').config();
-// const { NODE_ENV, JWT_SECRET } = process.env;
 const User = require('../models/user');
 const {
   NotFoundError, UnauthorizedError, BadRequestError, ConflictingError,
@@ -69,8 +67,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       // аутентификация успешна! пользователь в переменной user
       const token = jwt.sign(
-        { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+        { _id: user._id }, JWT_SECRET,
        { expiresIn: '7d' });
     /*const token = jwt.sign(
       { _id: user._id },
