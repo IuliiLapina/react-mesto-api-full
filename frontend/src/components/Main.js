@@ -37,7 +37,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
         <ul className="cards">
           {[cards].map((card) => (
             <Card
-              card={card}
+              card={data.card}
               onCardClick={onCardClick}
               key={card._id}
               onCardLike={onCardLike}
