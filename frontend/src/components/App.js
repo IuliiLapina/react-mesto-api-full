@@ -240,8 +240,10 @@ function App() {
   React.useEffect(() => { 
     checkToken();  
   }) 
-console.log(`в апп ${cards}`);
-  return (
+
+console.log(`в апп ${obj.cards}`);
+  
+return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header 
