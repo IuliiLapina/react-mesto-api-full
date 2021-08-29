@@ -254,7 +254,7 @@ React.useEffect(() => {
   React.useEffect(() => { 
     checkToken();  
   }) 
-
+console.log(`в апп ${cards}`);
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -273,7 +273,7 @@ React.useEffect(() => {
               onEditProfile={handleEditProfileClick}
               onAddPlace={handleAddPlaceClick}
               onCardClick={handleCardClick}
-              cards={[cards]}
+              cards={cards}
               onCardLike={handleCardLike}
               onCardDelete={handleCardDelete}
             />
