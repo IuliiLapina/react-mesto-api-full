@@ -258,21 +258,22 @@ function App() {
     localStorage.removeItem('jwt');
   }
 
-  /*
   React.useEffect(() => {
-    api
+    if (loggedIn) {
+      api
       .getInitialCards()
       .then((cardData) => {
         setCards(cardData);
       })
       .catch((err) => console.log(err));
-  }, []);
-*/
+    }
+  }, [loggedIn]);
 
+/*
   React.useEffect(() => {
     if (loggedIn) {
       history.push('/')
-     // Promise.all([api.getUserData(), api.getInitialCards()])
+      Promise.all([api.getUserData(), api.getInitialCards()])
       .then(([userData, cardData]) => {
         setCurrentUser(userData);
         setCards(cardData);
@@ -282,7 +283,7 @@ function App() {
     
   }, [loggedIn, history])
   // }, [loggedIn])
-
+*/
   React.useEffect(() => { 
     checkToken();  
   }) 
