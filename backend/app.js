@@ -1,6 +1,6 @@
-
-//require('dotenv').config();
+// require('dotenv').config();
 const express = require('express');
+// eslint-disable-next-line import/no-unresolved
 const cors = require('cors');
 // eslint-disable-next-line import/no-unresolved
 const mongoose = require('mongoose');
@@ -35,15 +35,15 @@ const corsOptions = {
   origin: [
     'https://mesto.iapina.nomoredomains.club',
     'http://mesto.iapina.nomoredomains.club',
-     'http://178.154.246.154',
-     'http://localhost:3000',
+    'http://178.154.246.154',
+    'http://localhost:3000',
   ],
   credentials: true,
 };
 
 app.use(cors(corsOptions));
 
-//app.options('*', cors());
+// app.options('*', cors());
 /*
 const allowedCors = [
   'https://mesto.iapina.nomoredomains.club',
@@ -76,13 +76,13 @@ app.use((req, res, next) => {
   next();
 });
 */
-//app.use(cors());
+// app.use(cors());
 
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
-//логгер запросов
+// логгер запросов
 app.use(requestLogger);
 
 app.get('/crash-test', () => {
@@ -119,7 +119,7 @@ app.get('*', (() => {
   throw new NotFoundError('Запрашиваемый ресурс не найден');
 }));
 
-//логгер ошибок
+// логгер ошибок
 app.use(errorLogger);
 app.use(errors()); // обработчик ошибок celebrate
 
