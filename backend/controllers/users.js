@@ -66,11 +66,13 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       // аутентификация успешна! пользователь в переменной user
       const token = jwt.sign({ _id: user._id }, JWT_SECRET_CODE, { expiresIn: '7d' });
-      res.cookie('jwt', token, {
+     /* res.cookie('jwt', token, {
         httpOnly: true,
         sameSite: true,
         maxAge: 3600000 * 24 * 7,
       }).status(200).send({ token });
+      */
+     return res.send({ token })
     })
     .catch(() => next(new UnauthorizedError('Произошла ошибка авторизации')));
 };
