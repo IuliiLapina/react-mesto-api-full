@@ -28,18 +28,19 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({}); //стейт контекста пользователя
   const [email, setEmail] = React.useState('');
 
-  React.useEffect(() => {
-    if (loggedIn) {
-      history.push('/');
-      api
-      .getUserData()
-      .then((userData) => {
-        setCurrentUser(userData);
-      })
-      .catch((err) => console.log(err));
-    }    
-  }, [loggedIn]);
+  //стейт для попапов
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
+    React.useState(false);
+  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+  
+  const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = React.useState(false);
+  const [titleInfoTooltipPopup, setTitleInfoTooltipPopup] = React.useState('');
+  const [imageInfoTooltipPopup, setImageInfoTooltipPopup] = React.useState('');
+  const [cards, setCards] = React.useState([]);
 
+  const [selectedCard, setSelectedCard] = React.useState({});
+  
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     // если у пользователя есть токен в localStorage, 
@@ -54,29 +55,28 @@ function App() {
       .catch((err) => console.log(err));
     }
   }, [history]);
-
-    //стейт карточек
   
-    React.useEffect(() => {
+  React.useEffect(() => {
+    if (loggedIn) {
+      history.push('/');
       api
-        .getInitialCards()
-        .then((cardData) => {
-          setCards(cardData);
-        })
-        .catch((err) => console.log(err));
-    }, []);
-  //стейт для попапов
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
-    React.useState(false);
-  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
-  
-  const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = React.useState(false);
-  const [titleInfoTooltipPopup, setTitleInfoTooltipPopup] = React.useState('');
-  const [imageInfoTooltipPopup, setImageInfoTooltipPopup] = React.useState('');
-  const [cards, setCards] = React.useState([]);
+      .getUserData()
+      .then((userData) => {
+        setCurrentUser(userData);
+      })
+      .catch((err) => console.log(err));
+    }    
+  }, [loggedIn]);
 
-  const [selectedCard, setSelectedCard] = React.useState({});
+  //стейт карточек
+  React.useEffect(() => {
+    api
+      .getInitialCards()
+      .then((cardData) => {
+        setCards(cardData);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   //Обработчики открытия попапов
   function handleEditProfileClick() {
@@ -150,20 +150,6 @@ function App() {
   })
   .catch((err) => console.log(err));
 }
-/*
-React.useEffect(() => {
-  if (loggedIn) {
-    history.push('/');
-    api
-    .getInitialCards()
-    .then((cardData) => {
-      setCards(cardData);
-    })
-
-    .catch((err) => console.log(err));
-  }
-}, [loggedIn]);
-*/
   
   //добавление / удаление лайков на карточках
   function handleCardLike(card) {
