@@ -1,8 +1,7 @@
 const jwt = require('jsonwebtoken');
-// require('dotenv').config();
-// const { NODE_ENV, JWT_SECRET } = process.env;
+require('dotenv').config();
+const { JWT_SECRET } = process.env;
 
-const JWT_SECRET_CODE = '42-ponchikaNaLune';
 const { UnauthorizedError } = require('./errors');
 
 module.exports = (req, res, next) => {
@@ -16,7 +15,7 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, JWT_SECRET_CODE);
+    payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     // отправим ошибку, если не получилось
     next(new UnauthorizedError('Произошла ошибка авторизации'));
