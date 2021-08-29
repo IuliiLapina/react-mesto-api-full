@@ -3,7 +3,8 @@ const JWT_SECRET_CODE = '42-ponchikaNaLune';
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
+// require('dotenv').config();
+// const { NODE_ENV, JWT_SECRET } = process.env;
 const User = require('../models/user');
 const {
   NotFoundError, UnauthorizedError, BadRequestError, ConflictingError,
@@ -66,7 +67,15 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       // аутентификация успешна! пользователь в переменной user
       const token = jwt.sign({ _id: user._id }, JWT_SECRET_CODE, { expiresIn: '7d' });
-     /* res.cookie('jwt', token, {
+    /*const token = jwt.sign(
+      { _id: user._id },
+      NODE_ENV === 'production' ? JWT_SECRET
+        : 'some-secret-key',
+      { expiresIn: '7d' },
+    );
+    */
+
+      /* res.cookie('jwt', token, {
         httpOnly: true,
         sameSite: true,
         maxAge: 3600000 * 24 * 7,
