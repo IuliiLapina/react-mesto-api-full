@@ -116,7 +116,7 @@ function App() {
   }
 
   //обновить аватар
-  function handleUpdateAvatar({avatar}) {
+  function handleUpdateAvatar(avatar) {
     api
       .setUserAvatar(avatar)
       .then((currentUser) => {
