@@ -291,21 +291,6 @@ React.useEffect(() => {
     history.push('/signin');
   }
 
-/*
-  React.useEffect(() => {
-    if (loggedIn) {
-      history.push('/')
-      Promise.all([api.getUserData(), api.getInitialCards()])
-      .then(([userData, cardData]) => {
-        setCurrentUser(userData);
-        setCards(cardData);
-      })
-      .catch(e => { console.log(e) })
-    }
-    
-  }, [loggedIn, history])
-  // }, [loggedIn])
-*/
   React.useEffect(() => { 
     checkToken();  
   }) 
