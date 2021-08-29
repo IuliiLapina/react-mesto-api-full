@@ -260,6 +260,7 @@ function App() {
 
   React.useEffect(() => {
     if (loggedIn) {
+      history.push('/');
       api
       .getInitialCards()
       .then((cardData) => {
