@@ -37,14 +37,6 @@ function App() {
         setCurrentUser(userData);
       })
       .catch((err) => console.log(err));
-/*
-      api
-      .getInitialCards()
-      .then((cardData) => {
-        setCards({cardData});
-      })
-      .catch((err) => console.log(err));
-      */
     }    
   }, [loggedIn]);
 
@@ -154,7 +146,7 @@ function App() {
   api
   .addNewCard({name, link})
   .then((newCard) => {
-    setCards({newCard, ...cards});
+    setCards([newCard, ...cards]);
 
     closeAllPopups();
   })
@@ -221,28 +213,6 @@ React.useEffect(() => {
   }
 
   //авторизация пользователя
-  /*
-  function authAuthorize(email, password) {
-    auth
-    .authorize(email, password)
-      .then((res) => {
-        auth
-        .getContent(res)
-        .then((res) => {
-          setLoggedIn(true);
-          setEmail(res.data.email);
-        })
-        .then(() => {
-          history.push('/');
-        })
-      })
-      .catch((err) => {
-        handleInfoTooltipContent('Что-то пошло не так! Попробуйте ещё раз.', errorImg);
-        handleInfoTooltipPopupOpen();
-        console.log(err);
-      })
-  }
-  */
   function authAuthorize(password, email) {
     auth.authorize(password, email)
         .then((res) => {
