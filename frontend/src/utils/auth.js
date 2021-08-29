@@ -5,6 +5,20 @@ const checkResponse = (res) => {
     return Promise.reject(`Ошибка ${res.status}`);
   }
 
+  //если токен действителен, вернёт ответ с информацией о пользователе
+export const getContent = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(checkResponse)
+  .then(data => data)
+} 
+
+
 export const BASE_URL = 'http://backend.mesto.iapina.nomoredomains.club';
 
 export const register = (email, password) => {
@@ -37,16 +51,3 @@ export const authorize = (email, password) => {
   })
   .catch(err => console.log(err))
 };
-
-//если токен действителен, вернёт ответ с информацией о пользователе
-export const getContent = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-    }
-  })
-  .then(checkResponse)
-  .then(data => data)
-} 
