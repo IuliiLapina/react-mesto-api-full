@@ -14,7 +14,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
           className="profile__avatar"
           name="avatar"
           alt="Аватар профиля"
-          style={{ backgroundImage: `url(${currentUser.avatar})` }}
+          style={{ backgroundImage: `url(${currentUser.data && currentUser.data.avatar})` }}
         ></div>
         <div className="profile__info">
           <h1 className="profile__title">{currentUser.data && currentUser.data.name}</h1>
@@ -24,7 +24,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
             type="button"
             aria-label="Зедактировать профиль"
           ></button>
-          <p className="profile__subtitle">{currentUser.about}</p>
+          <p className="profile__subtitle">{currentUser.data && currentUser.data.about}</p>
         </div>
         <button
           onClick={onAddPlace}
