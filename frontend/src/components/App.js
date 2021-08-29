@@ -28,7 +28,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({}); //стейт контекста пользователя
   const [email, setEmail] = React.useState('');
 
-  /*
+  
   React.useEffect(() => {
     api
       .getUserData()
@@ -37,7 +37,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, []);
-*/
+
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     // если у пользователя есть токен в localStorage, 
@@ -146,6 +146,7 @@ React.useEffect(() => {
     .then((cardData) => {
       setCards(cardData);
     })
+
     .catch((err) => console.log(err));
   }
 }, [loggedIn]);
