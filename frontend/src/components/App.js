@@ -50,7 +50,7 @@ function App() {
       api
       .getInitialCards()
       .then((cardData) => {
-        setCards(cardData);
+        setCards({cardData});
       })
       .catch((err) => console.log(err));
     }    
