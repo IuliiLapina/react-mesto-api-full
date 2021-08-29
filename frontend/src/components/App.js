@@ -267,10 +267,9 @@ React.useEffect(() => {
   function handleExit () {
     setLoggedIn(false);
     setEmail('');
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
+    history.push('/signin');
   }
-
-
 
 /*
   React.useEffect(() => {
