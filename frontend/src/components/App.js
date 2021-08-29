@@ -27,16 +27,7 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({}); //стейт контекста пользователя
   const [email, setEmail] = React.useState('');
-/*
-  React.useEffect(() => {
-    api
-      .getUserData()
-      .then((userData) => {
-        setCurrentUser(userData);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-  */
+
   React.useEffect(() => {
     if (loggedIn) {
       history.push('/');
@@ -46,13 +37,14 @@ function App() {
         setCurrentUser(userData);
       })
       .catch((err) => console.log(err));
-
+/*
       api
       .getInitialCards()
       .then((cardData) => {
         setCards({cardData});
       })
       .catch((err) => console.log(err));
+      */
     }    
   }, [loggedIn]);
 
@@ -146,7 +138,7 @@ function App() {
   }
 
   //стейт карточек
-  /*
+  
   React.useEffect(() => {
     api
       .getInitialCards()
@@ -155,7 +147,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, []);
-*/
+
 
  //добавление карточки
  function handleAddPlaceSubmit({name, link}) {
