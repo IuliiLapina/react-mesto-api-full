@@ -50,7 +50,7 @@ class Api {
       headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({
-        avatar: link
+        avatar: link.avatar
       })
     })
     .then(this._checkResponse);
