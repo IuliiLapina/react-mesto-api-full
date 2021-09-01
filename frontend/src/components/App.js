@@ -68,7 +68,7 @@ function App() {
     }    
   }, [loggedIn]);
 
-  console.log(currentUser._id);
+  console.log(currentUser._id, currentUser);
 
   //Обработчики открытия попапов
   function handleEditProfileClick() {
