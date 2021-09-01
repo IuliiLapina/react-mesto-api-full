@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 // eslint-disable-next-line max-classes-per-file
 class NotFoundError extends Error {
   constructor(message) {
