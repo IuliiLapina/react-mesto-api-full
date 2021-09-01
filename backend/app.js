@@ -100,20 +100,23 @@ app.post('/signup', celebrate({
     password: Joi.string().required().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().min(2).pattern(/(https?:\/\/)(w{3}\.)?(((\d{1,3}\.){3}\d{1,3})|((\w-?)+\.(ru|com)))(:\d{2,5})?((\/.+)+)?\/?#?/),
+    avatar: Joi.string().min(2).pattern(/https?:\/\/(www\.)?[a-zA-Z\d\-.]{1,}\.[a-z]{1,6}([/a-z0-9\-._~:?#[\]@!$&'()*+,;=]*)/),
+    //
+   // avatar: Joi.string().min(2).pattern(/(https?:\/\/)(w{3}\.)?(((\d{1,3}\.){3}\d{1,3})|((\w-?)+\.(ru|com)))(:\d{2,5})?((\/.+)+)?\/?#?/),
   }),
 }), createUser);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
-    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: true } }).required(),
+    // email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
+    email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: true } }),
     password: Joi.string().required().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
   }),
 }), login);
 
 // авторизация
 app.use(auth);
-// все что ниже - закрыто авторизацией
+// все что ниже - защищено авторизацией
 
 app.use('/users', userRouter);
 app.use('/cards', cardRouter);
