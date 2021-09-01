@@ -95,7 +95,8 @@ app.get('/crash-test', () => {
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
+    // email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
+    email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: true } }),
     password: Joi.string().required().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
