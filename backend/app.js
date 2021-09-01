@@ -117,7 +117,7 @@ app.use(auth);
 app.use('/users', userRouter);
 app.use('/cards', cardRouter);
 
-app.get('*', (() => {
+app.use('*', (() => {
   throw new NotFoundError('Запрашиваемый ресурс не найден');
 }));
 
