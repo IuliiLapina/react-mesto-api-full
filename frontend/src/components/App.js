@@ -68,6 +68,8 @@ function App() {
     }    
   }, [loggedIn]);
 
+  console.log(currentUser._id);
+
   //Обработчики открытия попапов
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
@@ -205,7 +207,6 @@ function App() {
             localStorage.setItem('token', res.token)
             setEmail(res.email);
             setCurrentUser(res);
-            console.log(res);
             setLoggedIn(true);
             history.push('/');
             handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
