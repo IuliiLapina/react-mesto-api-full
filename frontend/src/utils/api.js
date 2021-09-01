@@ -107,7 +107,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "http://backend.mesto.iapina.nomoredomains.club",
+  address: "https://backend.mesto.iapina.nomoredomains.club",
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${localStorage.getItem('token')}`,
