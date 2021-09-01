@@ -133,8 +133,8 @@ function App() {
   React.useEffect(() => {
     api
       .getInitialCards()
-      .then((cardData) => {
-        setCards(cardData);
+      .then(({cardData}) => {
+        setCards({cardData});
       })
       .catch((err) => console.log(err));
   }, []);
