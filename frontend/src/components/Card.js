@@ -5,7 +5,8 @@ function Card({ card, onCardClick, onCardLike, onCardDelete}) {
   const currentUser = React.useContext(CurrentUserContext);
 
   // Определяем, являемся ли мы владельцем текущей карточки
-  const isOwn = (card.owner === currentUser.data._id);
+  const isOwn = (card.owner === currentUser._id);
+  console.log(`currentUser = ${currentUser}`)
   console.log(`isOwn = ${isOwn}`)
   console.log(`card.owner = ${card.owner}`)
   console.log(`currentUser._id = ${currentUser._id}`)
