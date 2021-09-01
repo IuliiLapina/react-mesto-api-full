@@ -106,7 +106,7 @@ app.post('/signup', celebrate({
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
-    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: true } }).required(),
     password: Joi.string().required().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
   }),
 }), login);
