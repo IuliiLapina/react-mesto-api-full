@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-// eslint-disable-next-line prefer-destructuring
-const ObjectId = require('mongodb').ObjectId;
+const { ObjectId } = require('mongodb');
 const validator = require('validator');
 
 const cardSchema = new mongoose.Schema({
