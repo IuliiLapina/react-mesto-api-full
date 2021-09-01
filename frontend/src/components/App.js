@@ -205,6 +205,7 @@ function App() {
             localStorage.setItem('token', res.token)
             setEmail(res.email);
             setCurrentUser(res);
+            console.log(res);
             setLoggedIn(true);
             history.push('/');
             handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
