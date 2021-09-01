@@ -44,12 +44,13 @@ class Api {
   }
 
   setUserAvatar(link) {
+    console.log(link);
     return fetch(`${this._address}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({
-        avatar: link.avatar
+        avatar: link
       })
     })
     .then(this._checkResponse);
@@ -112,7 +113,6 @@ const api = new Api({
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${localStorage.getItem('token')}`,
   },
-//  token: "7a45c432-7073-4f3b-9cf1-c12940fb64b9",
 });
 
 export default api;
