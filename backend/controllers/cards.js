@@ -36,7 +36,7 @@ module.exports.deleteCard = (req, res, next) => {
       if (card.owner.toString() === req.user._id) {
         return Card.findByIdAndRemove(req.params.cardId)
           .then(() => {
-            res.send({ data: card });
+            res.send(card);
           });
       }
       return next(new ForbiddenError('Недостаточно прав для действия'));
