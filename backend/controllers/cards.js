@@ -35,8 +35,8 @@ module.exports.deleteCard = (req, res, next) => {
 
       if (card.owner.toString() === req.user._id) {
         return Card.findByIdAndRemove(req.params.cardId)
-          .then(() => {
-            res.send(card);
+          .then((c) => {
+            res.send(c);
           });
       }
       return next(new ForbiddenError('Недостаточно прав для действия'));
@@ -85,7 +85,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card || !req.user._id) {
         throw new NotFoundError('Карточка с таким id или пользователь не найдены');
       }
-      return res.send({ data: card });
+      return res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
