@@ -82,7 +82,7 @@ function App() {
   }
 
   function handleCardClick(card) {
-    setSelectedCard({card});
+    setSelectedCard(card);
   }
 
   function handleInfoTooltipPopupOpen() {
