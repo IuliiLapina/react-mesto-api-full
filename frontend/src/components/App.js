@@ -172,6 +172,8 @@ function App() {
 
   //удаление карточки
   function handleCardDelete(card) {
+    console.log(`handleCardDelete card = ${card}`);
+    console.log(`handleCardDelete card._id = ${card._id}`);
     api
     .deleteCard(card._id)
     .then(() => {
