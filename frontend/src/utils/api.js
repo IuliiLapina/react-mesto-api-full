@@ -80,7 +80,7 @@ class Api {
 
   deleteCardLike(cardId) {
     return fetch(`${this._address}/cards/${cardId}/likes`, {
-      method: 'PUT',
+      method: 'DELETE',
       headers: this._headers,
       credentials: 'include',
       })
