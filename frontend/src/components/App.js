@@ -164,7 +164,7 @@ function App() {
       .then((newCard) => {
         //state- текущее значение cards до изменения, с - элемент в массиве cards на каждой итерации
         setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard.data : c))
+          state.map((c) => (c._id === card._id ? newCard : c))
         );
       })
       .catch((err) => console.log(err));
