@@ -154,9 +154,9 @@ function App() {
   
   //добавление / удаление лайков на карточках
   function handleCardLike(card) {
-    console.log(card.likes);
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(like => like === (currentUser.data && currentUser.data._id));
+    const isLiked = card.likes.some(like => like === currentUser._id);
+    console.log(`currentUser._id = ${currentUser._id}`)
     // Отправляем запрос в API и получаем обновлённые данные карточки
     const likeToChange = isLiked
       ? api.deleteCardLike(card._id)
