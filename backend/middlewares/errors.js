@@ -1,12 +1,4 @@
-/* eslint-disable linebreak-style */
-// eslint-disable-next-line max-classes-per-file
-class NotFoundError extends Error {
-  constructor(message) {
-    super(message);
-    this.statusCode = 404;
-  }
-}
-
+/* eslint-disable max-classes-per-file */
 class ForbiddenError extends Error {
   constructor(message) {
     super(message);
@@ -36,7 +28,6 @@ class ConflictingError extends Error {
 }
 
 module.exports = {
-  NotFoundError,
   ForbiddenError,
   UnauthorizedError,
   BadRequestError,
