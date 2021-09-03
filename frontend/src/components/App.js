@@ -200,22 +200,17 @@ function App() {
   //авторизация пользователя
   function authAuthorize(password, email) {
     auth.authorize(password, email)
-      .then((data) => {
-        auth.getContent(data)
         .then((res) => {
-          setEmail(res.data.email);
-          setCurrentUser(res.data); 
-          console.log(data);           
-          setLoggedIn(true);
-        })  
-        .then((res) =>{
           if (res) {
             localStorage.setItem('token', res.token)
+            setEmail(res.email);
+            setCurrentUser(res); 
+            console.log(res)           
+            setLoggedIn(true);
             history.push('/');
             handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
             handleInfoTooltipPopupOpen();
-          }
-        })
+        }
     })
     .catch((err) => {
       handleInfoTooltipContent('Что-то пошло не так! Попробуйте ещё раз.', errorImg);
@@ -223,34 +218,7 @@ function App() {
       console.log(err);
     })
   }
-/*
-  // Авторизация 
-  function authorization(email, password) {
-    Auth.authorize(escapeHtml(email), password )
-    .then((data) => {
-      Auth.getContent(data)
-        .then((res) => {
-          setEmail(res.data.email);
-          setCurrentUser(res.data);
-          console.log(data);
-          setLoggedIn(true);
-        })
-        .then(()=> {
-          handleInfoTooltipContent({iconPath: regIsFine, text: 'Вы успешно авторизовались!'})
-        handleInfoTooltipPopupOpen();
-         // редирект на главную
-         history.push("/");
-         //свайпнули модалку после редиректа через 1сек
-         setTimeout(closeAllPopups, 1000);
-        })
-        
-    }).catch((err) => {
-      handleInfoTooltipContent({iconPath: regIsFailed, text: 'Что то пошло не так!'})
-      handleInfoTooltipPopupOpen();
-      console.log(err)
-    })
-  }
-*/
+
   function checkToken() {
     const token = localStorage.getItem('token')
 
