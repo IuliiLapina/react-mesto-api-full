@@ -236,9 +236,9 @@ function App() {
           handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
           handleInfoTooltipPopupOpen();
         }
-        auth.getContent(data)
-      .then((data) => {
-        setCurrentUser(data); 
+        auth.getContent()
+      .then((res) => {
+        setCurrentUser(res.data); 
       })
       })
     
