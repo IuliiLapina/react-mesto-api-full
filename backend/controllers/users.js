@@ -36,7 +36,7 @@ module.exports.createUser = (req, res, next) => {
             // вернём записанные в базу данные
             // eslint-disable-next-line no-shadow
             .then((user) => {
-              res.status(201).send({ data: user });
+              res.status(201).send(user);
             })
             // данные не записались, вернём ошибку
             .catch((err) => {
