@@ -205,7 +205,6 @@ function App() {
             localStorage.setItem('token', res.token)
             setEmail(res.email);
             setCurrentUser(res.data);
-            console.log(data);
             console.log(res.name);
             console.log(res.data.user);
             
