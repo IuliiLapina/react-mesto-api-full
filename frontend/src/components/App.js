@@ -196,7 +196,7 @@ function App() {
         console.log(err);
       })
   }
-
+/*
     //авторизация пользователя
     function authAuthorize(password, email) {
       auth.authorize(password, email)
@@ -221,7 +221,8 @@ function App() {
         console.log(err);
       })
     }
-/*
+*/
+  
   //авторизация пользователя
   function authAuthorize(password, email) {
     auth.authorize(password, email)
@@ -247,7 +248,7 @@ function App() {
       console.log(err);
     })
   }
-*/
+
   function checkToken() {
     const token = localStorage.getItem('token')
 
