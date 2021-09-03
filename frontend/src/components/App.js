@@ -200,17 +200,20 @@ function App() {
   //авторизация пользователя
   function authAuthorize(password, email) {
     auth.authorize(password, email)
+      .then((data) => {
+        auth.getContent(data)
         .then((res) => {
           if (res) {
             localStorage.setItem('token', res.token)
-            setEmail(res.email);
-            setCurrentUser(res); 
-            console.log(res)           
+            setEmail(res.data.email);
+            setCurrentUser(res.data); 
+            console.log(data);           
             setLoggedIn(true);
             history.push('/');
             handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
             handleInfoTooltipPopupOpen();
         }
+      })  
     })
     .catch((err) => {
       handleInfoTooltipContent('Что-то пошло не так! Попробуйте ещё раз.', errorImg);
@@ -218,7 +221,7 @@ function App() {
       console.log(err);
     })
   }
-
+  
   function checkToken() {
     const token = localStorage.getItem('token')
 
