@@ -2,10 +2,10 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const {
-  UnauthorizedError, BadRequestError, ConflictingError,
-} = require('../middlewares/errors');
+const { ConflictingError } = require('../errors/conflicting-error');
 const { NotFoundError } = require('../errors/not-found-error');
+const { UnauthorizedError } = require('../errors/unauthorized-error');
+const { BadRequestError } = require('../errors/bad-request-error');
 
 module.exports.createUser = (req, res, next) => {
   // получим из объекта запроса имя и описание пользователя
