@@ -3,8 +3,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const {
-  NotFoundError, UnauthorizedError, BadRequestError, ConflictingError,
+  UnauthorizedError, BadRequestError, ConflictingError,
 } = require('../middlewares/errors');
+const { NotFoundError } = require('../errors/not-found-error');
 
 module.exports.createUser = (req, res, next) => {
   // получим из объекта запроса имя и описание пользователя
