@@ -14,7 +14,8 @@ const { login } = require('./controllers/users');
 const { createUser } = require('./controllers/users');
 
 const auth = require('./middlewares/auth');
-const { NotFoundError, BadRequestError } = require('./middlewares/errors');
+const { NotFoundError } = require('./errors/not-found-error');
+const { BadRequestError } = require('./middlewares/errors');
 const { requestLogger } = require('./middlewares/logger');
 const { errorLogger } = require('./middlewares/logger');
 
