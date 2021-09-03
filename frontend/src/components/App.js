@@ -227,7 +227,7 @@ function App() {
   function authAuthorize(password, email) {
     auth.authorize(password, email)
       .then((res) => {
-        auth.getContent(res)
+        auth.getContent(res.token)
             .then((res) => {
               setCurrentUser(res.data); 
             })
