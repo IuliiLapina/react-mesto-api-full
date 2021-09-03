@@ -204,8 +204,8 @@ function App() {
           if (res) {
             localStorage.setItem('token', res.token)
             setEmail(res.email);
-            setCurrentUser(res);
-            console.log(res.data.name);
+            setCurrentUser(res.data);
+            console.log(res.data);
             console.log(res.name);
             console.log(res.data);
             setLoggedIn(true);
