@@ -197,6 +197,31 @@ function App() {
       })
   }
 
+    //авторизация пользователя
+    function authAuthorize(password, email) {
+      auth.authorize(password, email)
+        .then((data) => {
+          auth.getContent(data)
+            .then((res) => {
+              if (res) {
+                localStorage.setItem('token', res.token)
+                setEmail(res.email);
+                setCurrentUser(res.data);
+                console.log(res.data)           
+                setLoggedIn(true);
+                history.push('/');
+                handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
+                handleInfoTooltipPopupOpen();
+              }
+            })
+        })
+      .catch((err) => {
+        handleInfoTooltipContent('Что-то пошло не так! Попробуйте ещё раз.', errorImg);
+        handleInfoTooltipPopupOpen();
+        console.log(err);
+      })
+    }
+/*
   //авторизация пользователя
   function authAuthorize(password, email) {
     auth.authorize(password, email)
@@ -222,7 +247,7 @@ function App() {
       console.log(err);
     })
   }
-
+*/
   function checkToken() {
     const token = localStorage.getItem('token')
 
