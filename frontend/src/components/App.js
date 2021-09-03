@@ -204,7 +204,7 @@ function App() {
           if (res) {
             localStorage.setItem('token', res.token)
             setEmail(res.email);
-            setCurrentUser(currentUser);
+            setCurrentUser(currentUser.data);
             console.log(currentUser);
             setLoggedIn(true);
             history.push('/');
