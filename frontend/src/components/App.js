@@ -200,18 +200,22 @@ function App() {
   //авторизация пользователя
   function authAuthorize(password, email) {
     auth.authorize(password, email)
-        .then((res) => {
-          if (res) {
-            localStorage.setItem('token', res.token)
-            setEmail(res.email);
-            setCurrentUser(res); 
-            console.log(res)           
-            setLoggedIn(true);
-            history.push('/');
-            handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
-            handleInfoTooltipPopupOpen();
+      .then((res) => {
+        if (res) {
+          localStorage.setItem('token', res.token)
+          setEmail(res.email);
+          console.log(res)           
+          setLoggedIn(true);
+          history.push('/');
+          handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
+          handleInfoTooltipPopupOpen();
         }
-    })
+        auth.getContent(data)
+      .then((data) => {
+        setCurrentUser(data); 
+      })
+      })
+    
     .catch((err) => {
       handleInfoTooltipContent('Что-то пошло не так! Попробуйте ещё раз.', errorImg);
       handleInfoTooltipPopupOpen();
