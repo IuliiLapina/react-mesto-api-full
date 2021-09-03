@@ -40,7 +40,7 @@ const corsOptions = {
     'https://backend.mesto.iapina.nomoredomains.club',
     'http://backend.mesto.iapina.nomoredomains.club',
     'http://178.154.246.154',
-    'http://localhost:3000',
+  //  'http://localhost:3000',
   ],
   credentials: true,
 };
