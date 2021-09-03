@@ -200,9 +200,9 @@ function App() {
     //авторизация пользователя
     function authAuthorize(password, email) {
       auth.authorize(password, email)
-        .then((data) => {
+        .then((res) => {
           auth.getContent(data)
-            .then((res) => {
+            .then((data) => {
               if (res) {
                 localStorage.setItem('token', res.token)
                 setEmail(res.email);
