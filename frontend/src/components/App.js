@@ -227,18 +227,15 @@ function App() {
   function authAuthorize(password, email) {
     auth.authorize(password, email)
       .then((res) => {
-        if (res) {
-          localStorage.setItem('token', res.token)
-          setEmail(res.email);
-          console.log(res)           
-          setLoggedIn(true);
-          history.push('/');
-          
-          auth.getContent()
+        auth.getContent(res)
             .then((res) => {
               setCurrentUser(res.data); 
             })
-
+        if (res) {
+          localStorage.setItem('token', res.token)
+          setEmail(res.email);
+          setLoggedIn(true);
+          history.push('/');
           handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
           handleInfoTooltipPopupOpen();
         }      
