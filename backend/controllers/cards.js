@@ -2,8 +2,9 @@
 const { ObjectId } = require('mongodb');
 
 const Card = require('../models/card');
-const { BadRequestError, ForbiddenError } = require('../middlewares/errors');
+const { BadRequestError } = require('../errors/bad-request-error');
 const { NotFoundError } = require('../errors/not-found-error');
+const { ForbiddenError } = require('../errors/forbidden-error');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
