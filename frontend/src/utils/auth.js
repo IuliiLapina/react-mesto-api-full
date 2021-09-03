@@ -42,7 +42,7 @@ export const getContent = (token) => {
     }
   })
   .then(checkResponse)
-  //.then(data => data)
+  .then(data => data)
 };
 
 const checkResponse = (res) => {
