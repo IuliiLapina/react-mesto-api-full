@@ -233,15 +233,16 @@ function App() {
           console.log(res)           
           setLoggedIn(true);
           history.push('/');
+          
+          auth.getContent()
+            .then((res) => {
+              setCurrentUser(res.data); 
+            })
+
           handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
           handleInfoTooltipPopupOpen();
-        }
-        auth.getContent()
-      .then((res) => {
-        setCurrentUser(res.data); 
-      })
-      })
-    
+        }      
+      })  
     .catch((err) => {
       handleInfoTooltipContent('Что-то пошло не так! Попробуйте ещё раз.', errorImg);
       handleInfoTooltipPopupOpen();
