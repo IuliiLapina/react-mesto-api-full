@@ -198,47 +198,47 @@ function App() {
   }
 /*
     //авторизация пользователя
-    function authAuthorize(password, email) {
-      auth.authorize(password, email)
+function authorization(email, password) {
+    Auth.authorize(escapeHtml(email), password )
+    .then((data) => {
+      Auth.getContent(data)
         .then((res) => {
-          auth.getContent(data)
-            .then((data) => {
-              if (res) {
-                localStorage.setItem('token', res.token)
-                setEmail(res.email);
-                setCurrentUser(res.data);
-                console.log(res.data)           
-                setLoggedIn(true);
-                history.push('/');
-                handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
-                handleInfoTooltipPopupOpen();
-              }
-            })
+          setEmail(res.data.email);
+          setCurrentUser(res.data);
+          console.log(data);
+          setLoggedIn(true);
         })
-      .catch((err) => {
-        handleInfoTooltipContent('Что-то пошло не так! Попробуйте ещё раз.', errorImg);
+        .then(()=> {
+          handleInfoTooltipContent({iconPath: regIsFine, text: 'Вы успешно авторизовались!'})
         handleInfoTooltipPopupOpen();
-        console.log(err);
-      })
-    }
+         // редирект на главную
+         history.push("/");
+         //свайпнули модалку после редиректа через 1сек
+         setTimeout(closeAllPopups, 1000);
+        })
+        
+    }).catch((err) => {
+      handleInfoTooltipContent({iconPath: regIsFailed, text: 'Что то пошло не так!'})
+      handleInfoTooltipPopupOpen();
+      console.log(err)
+    })
+  }
 */
   
   //авторизация пользователя
   function authAuthorize(password, email) {
     auth.authorize(password, email)
-      .then((res) => {
-        auth.getContent(res.token)
-            .then((res) => {
-              setCurrentUser(res.data); 
-            })
-        if (res) {
-          localStorage.setItem('token', res.token)
-          setEmail(res.email);
-          setLoggedIn(true);
-          history.push('/');
-          handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
-          handleInfoTooltipPopupOpen();
-        }      
+      .then((data) => {
+        auth.getContent(data)
+            .then((res) => {localStorage.setItem('token', res.token)
+            setEmail(res.email);
+            setCurrentUser(res.data); 
+
+            setLoggedIn(true);
+            history.push('/');
+            handleInfoTooltipContent('Вы успешно авторизовались!', okImg);
+            handleInfoTooltipPopupOpen();
+            })     
       })  
     .catch((err) => {
       handleInfoTooltipContent('Что-то пошло не так! Попробуйте ещё раз.', errorImg);
