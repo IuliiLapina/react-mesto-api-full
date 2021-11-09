@@ -29,7 +29,7 @@
     "mongodb": "^4.1.1",
     "mongoose": "^5.13.8",
     "typescript": "^4.4.2",
-    "validator": "^13.6.0",
+    "validator": "^13.7.0",
     "winston": "^3.3.3",
     "winston-express": "^0.1.1"
   },
