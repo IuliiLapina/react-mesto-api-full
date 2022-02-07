@@ -1,4 +1,11 @@
-.popup__info-image{
+.popup__info-image {
   width: 120px;
   padding: 61px 154px 30px;
+}
+
+@media screen and (max-width: 880px) {
+  .popup__info-image {
+    width: 100px;
+    padding: 30px 94px 15px;
+  }
 }
